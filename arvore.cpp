@@ -11,11 +11,18 @@ raiz = NULL;
 
   ArvoreDec::~ArvoreDec() //destrutor
   {
-     
+     deletarA(raiz);
   }
 
   void ArvoreDec::deletarA(No* Noatual)
-  {}
+  {
+    if(Noatual != NULL) {
+      deletarA(Noatual->Nao);
+      deletarA(Noatual->Sim);
+      delete Noatual;
+
+    }
+  }
 
   No* ArvoreDec::obterRaiz()
   {
