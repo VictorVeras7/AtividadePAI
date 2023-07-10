@@ -76,7 +76,37 @@ raiz = NULL;
 
   void ArvoreDec::remover(diagnostico diagnostico)
   {
-    
+    removerbusca(diagnostico, raiz);
+  }
+
+  void ArvoreDec::removerbusca(diagnostico diagnostico, No*& noatual) {
+     if(diagnostico.obterResposta() <= noatual->diagnostico.obterResposta()) {
+        removerbusca(diagnostico, noatual->Nao);
+  } else if(diagnostico.obterResposta() > noatual->diagnostico.obterResposta()) {
+         removerbusca(diagnostico, noatual->Sim);  
+  } else {
+         deletarNo(noatual);
+     } }
+  void ArvoreDec::deletarNo(No*& noatual)  {
+    No* temp = noatual;
+    if(noatual->Nao == NULL) {
+     noatual = noatual->Sim; 
+      delete temp;
+    } else if(noatual->Sim ==NULL) {
+      noatual = noatual->Nao;
+      delete temp;
+    } else {
+        diagnostico outrosint;
+        proxsint(outrosint, noatual);
+        noatual->diagnostico = outrosint;
+        removerbusca(outrosint, noatual->Sim);
+    }
+  } 
+  void ArvoreDec::proxsint(diagnostico& outrosint, No* temp) {
+    temp = temp->Sim;
+    while(temp->Nao != NULL) {
+      temp = temp->Nao;
+    } outrosint = temp->diagnostico;
   }
 
   void ArvoreDec::buscar(diagnostico& diagnostico, bool busca)
