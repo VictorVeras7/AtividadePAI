@@ -17,6 +17,7 @@ class ArvoreDec{
   public:
   ArvoreDec();
   ~ArvoreDec();
+  void lerSintomasArq(std::string file)
   void deletarA(No* Noatual);
   No* obterRaiz();
   bool estavazio();
