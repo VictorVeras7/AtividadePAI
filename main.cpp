@@ -13,9 +13,10 @@ int main()
     do {
         cout << "Digite 0 para parar o algoritmo!" << endl;
         cout << "Digite 1 para inserir um sintoma!" << endl;
-        cout << "Digite 2 para remover um sintoma!" << endl;
-        cout << "Digite 3 para buscar um sintoma!" << endl;
-        cout << "Digite 4 para imprimir a árvore!" << endl;
+         cout << "Digite 2 para inserir um arquivo!" << endl;
+        cout << "Digite 3 para remover um sintoma!" << endl;
+        cout << "Digite 4 para buscar um sintoma!" << endl;
+        cout << "Digite 5 para imprimir a árvore!" << endl;
         cin >> opcao;
 
         if (opcao == 1) {
@@ -29,14 +30,21 @@ int main()
                 cout << "Não foi possível inserir o sintoma!" << endl;
             } else {
                 arvore.inserir(diagn);
+            } else if(opcao == 2) {
+                int s = std::stoi(tokens[1]);
+                string nome_arq;
+                getline(cin, nome_arq)
+                diagnostico[s]->lerSintomasArq(nome_arq);
+                diagnostico[s]->imprimiremo();
+
             }
-        } else if (opcao == 2) {
+        } else if (opcao == 3) {
             int resposta;
             cout << "Digite a resposta do sintoma a ser removido (1 para Sim, 0 para Não): ";
             cin >> resposta;
             diagnostico diagn(resposta);
             arvore.remover(diagn);
-        } else if (opcao == 3) {
+        } else if (opcao == 4) {
             int resposta;
             cout << "Digite a resposta do sintoma a ser buscado (1 para Sim, 0 para Não): ";
             cin >> resposta;
@@ -48,7 +56,7 @@ int main()
             } else {
                 cout << "Sintoma não encontrado!" << endl;
             }
-        } else if (opcao == 4) {
+        } else if (opcao == 5) {
             int imp;
             cout << "Digite 1 para fazer a impressão em pré-ordem!" << endl;
             cout << "Digite 2 para fazer a impressão em ordem!" << endl;
